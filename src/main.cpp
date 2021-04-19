@@ -99,7 +99,7 @@ int main()
       case 'k':
          break;
       default:
-         cout << "Podano błędną opcję.";
+         cout << "Podano błędną opcję!";
          cout << endl;
          break;
       }
