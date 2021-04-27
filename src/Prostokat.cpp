@@ -1,5 +1,6 @@
 #include "Prostokat.hh"
 
+
 using namespace std;
 
 /*
@@ -56,26 +57,20 @@ bool Prostokat::ZapiszPlik(string sNazwaPliku, double Przesuniecie)
 /*Funkcja obraca prostokąt podaną ilość razy */
 void Prostokat::ObrocProstokat(Macierz2x2 Macierz)
 {
-
   for (int index = 0; index < Macierz.getIlosc(); index++)
   {
-    Prostokat[0] = Macierz * Prostokat[0];
-    Prostokat[1] = Macierz * Prostokat[1];
-    Prostokat[2] = Macierz * Prostokat[2];
-    Prostokat[3] = Macierz * Prostokat[3];
+    for (int index = 0; index < wymiarProst; index++)
+      Prostokat[index] = Macierz * Prostokat[index];
   }
 }
 
 /*Przesuniecie prostokata o podany wektor */
 
-void Prostokat::Przesuniecie(Wektor2D Wektor)
+void Prostokat::Przesuniecie(Wektor Wektor)
 {
-  Prostokat[0] = Prostokat[0] + Wektor;
-  Prostokat[1] = Prostokat[1] + Wektor;
-  Prostokat[2] = Prostokat[2] + Wektor;
-  Prostokat[3] = Prostokat[3] + Wektor;
+  for (int index = 0; index < wymiarProst; index++)
+    Prostokat[index] = Prostokat[index] + Wektor;
 }
-
 
 /*Funkcja oblicza długości boków i sprawdza czy długość naprzeciwległych jest identyczna*/
 void Prostokat::ObliczDlugosc()
@@ -117,18 +112,18 @@ void Prostokat::WspolrzedneDoStrumienia(ostream &StrmWy, double Przesuniecie)
          << setw(16) << fixed << setprecision(10) << Prostokat[2][1] + Przesuniecie << endl;
   StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[3][0] + Przesuniecie
          << setw(16) << fixed << setprecision(10) << Prostokat[3][1] + Przesuniecie << endl;
-  StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[0][0] + Przesuniecie
-         << setw(16) << fixed << setprecision(10) << Prostokat[0][1] + Przesuniecie << endl;
+  /*StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[0][0] + Przesuniecie
+         << setw(16) << fixed << setprecision(10) << Prostokat[0][1] + Przesuniecie << endl;*/
 }
 
 /*indeksowanie stałego prostokata*/
-Wektor2D Prostokat::operator[](int index) const
+Wektor Prostokat::operator[](int index) const
 {
   return Prostokat[index];
 }
 
 /*indeksowanie referencji do prostokata*/
-Wektor2D &Prostokat::operator[](int index)
+Wektor &Prostokat::operator[](int index)
 {
   return Prostokat[index];
 }

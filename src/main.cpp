@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <fstream>
 #include <limits>
-#include "Wektor2D.hh"
+#include "Wektor.hh"
 #include "Macierz2x2.hh"
 #include "Prostokat.hh"
 #include "lacze_do_gnuplota.hh"
@@ -19,7 +19,7 @@ int main()
                                // rysunku prostokata
    string sNazwaPliku;
    Macierz2x2 Macierz;
-   Wektor2D wktr;
+   Wektor wktr;
    char wybor = '0';
 
    Prostokat.WczytajProstokat(sNazwaPliku);
@@ -64,6 +64,7 @@ int main()
               << endl;
          break;
       case 'o':
+      //assert(("There are five lights", 2 + 2 == 5));
          Macierz.KatObrotu();
          Macierz.InicjalizujMacierz();
          Prostokat.ObrocProstokat(Macierz);

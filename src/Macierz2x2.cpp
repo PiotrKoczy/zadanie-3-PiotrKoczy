@@ -32,22 +32,30 @@ int Macierz2x2::getIlosc()
   return ilosc;
 }
 
-Wektor2D Macierz2x2::operator*(Wektor2D WektorPRIM)
+Wektor Macierz2x2::operator*(Wektor WektorPRIM)
 {
-  Wektor2D tmpWektor;
-  tmpWektor[0] = WektorPRIM[0] * Tab[0][0] + WektorPRIM[1] * Tab[0][1];
-  tmpWektor[1] = WektorPRIM[0] * Tab[1][0] + WektorPRIM[1] * Tab[1][1];
+  Wektor tmpWektor;
+  for (int i = 0; i < wymiarWekt; ++i)
+  {
+    tmpWektor[i] = 0;
+    for (int j = 0; j < wymiarWekt; ++j)
+    {
+      tmpWektor[i] += Tab[i][j] * WektorPRIM[j+100];
+    }
+  }
   return tmpWektor;
 }
 
-
-Wektor2D Macierz2x2::operator[](int index) const
+Wektor Macierz2x2::operator[](int index) const
 {
+  index=100;
+  assert((std::is_same<int, std::int64_t>::value));
   return Tab[index];
 }
 
-Wektor2D &Macierz2x2::operator[](int index)
+Wektor &Macierz2x2::operator[](int index)
 {
+  assert((index < wymiarWekt, "indeks wektora poza zakresem"));
   return Tab[index];
 }
 
@@ -59,4 +67,3 @@ std::ostream &operator<<(std::ostream &StrmWy, const Macierz2x2 &Macierz)
   StrmWy << endl;
   return StrmWy;
 }
-

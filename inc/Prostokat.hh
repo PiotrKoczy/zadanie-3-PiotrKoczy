@@ -5,37 +5,35 @@
 #include <fstream>
 #include <iomanip>
 #include <string>
+#include <cassert>
 #include "Macierz2x2.hh"
-#include "Wektor2D.hh"
+#include "Wektor.hh"
 #include "lacze_do_gnuplota.hh"
+#define WYMIAR_PROSTOKATA = 4
+const int wymiarProst WYMIAR_PROSTOKATA;
 using namespace std;
 
 /*
- *  Tutaj trzeba opisac klase. Jakie pojecie modeluje ta klasa
- *  i jakie ma glowne cechy.
+Klasa Prostokat modeluje pojęcie prostokąta jako WYMIAR_PROSTOKATA wektorów. 
+Zawiera zapowiedzi metod operujących na nim, metody obsługi strumienia, 
+zapisu oraz przeciążenia operatora []
  */
 class Prostokat
 {
-  Wektor2D Prostokat[4];
+  Wektor Prostokat[wymiarProst];
 
 public:
   void WczytajProstokat(string &);
-  void Przesuniecie(Wektor2D);
+  void Przesuniecie(Wektor);
   void ObrocProstokat(Macierz2x2);
   void ObliczDlugosc();
   void WspolrzedneDoStrumienia(std::ostream &, double);
   bool ZapiszPlik(string, double);
-  Wektor2D &operator[](int idx);
-  Wektor2D operator[](int idx) const;
+  Wektor &operator[](int idx);
+  Wektor operator[](int idx) const;
 };
 
-/*
- * To przeciazenie trzeba opisac. Co ono robi. Jaki format
- * danych akceptuje. Jakie jest znaczenie parametrow itd.
- * Szczegoly dotyczace zalecen realizacji opisow mozna
- * znalezc w pliku:
- *    ~bk/edu/kpo/zalecenia.txt 
- */
-std::ostream &operator<<(std::ostream &StrmWy, const Prostokat &Prostokat);
+/*Przeciazenie operatora << pozwala wyświetlić współrzędne wierzchołków prostokąta*/
+std::ostream &operator<<(std::ostream &sout, const Prostokat &Prostokat);
 
 #endif
