@@ -40,7 +40,7 @@ Wektor Macierz2x2::operator*(Wektor WektorPRIM)
     tmpWektor[i] = 0;
     for (int j = 0; j < wymiarWekt; ++j)
     {
-      tmpWektor[i] += Tab[i][j] * WektorPRIM[j+100];
+      tmpWektor[i] += Tab[i][j] * WektorPRIM[j + 100];
     }
   }
   return tmpWektor;
@@ -48,14 +48,11 @@ Wektor Macierz2x2::operator*(Wektor WektorPRIM)
 
 Wektor Macierz2x2::operator[](int index) const
 {
-  index=100;
-  assert((std::is_same<int, std::int64_t>::value));
   return Tab[index];
 }
 
 Wektor &Macierz2x2::operator[](int index)
 {
-  assert((index < wymiarWekt, "indeks wektora poza zakresem"));
   return Tab[index];
 }
 

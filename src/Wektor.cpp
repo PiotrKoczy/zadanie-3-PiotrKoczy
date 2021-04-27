@@ -28,15 +28,22 @@ void Wektor::setWektor()
 /*indeksowanie stałego wektora*/
 double Wektor::operator[](int index) const
 {
-    assert((index < wymiarWekt, "indeks wektora poza zakresem"));
     return wektor[index];
 }
 
 /*indeksowanie referencji do wektora*/
 double &Wektor::operator[](int index)
 {
-    assert((index < wymiarWekt, "indeks wektora poza zakresem"));
-    return wektor[index];
+    // index=100;
+    // assert((std::is_same<int, std::int64_t>::value));
+    // assert((index < wymiarWekt, "indeks wektora poza zakresem"));
+    if (index > 0 && index < wymiarWekt)
+        return wektor[index];
+    else
+    {
+        cout << "Wektor poza zakresem\n";
+        return wektor[0];
+    }
 }
 
 /*Operator przeciążenia wypisuje wartości tablicy wektor na strumień wyjściowy*/

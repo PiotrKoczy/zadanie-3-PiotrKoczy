@@ -14,10 +14,16 @@ const int wymiarProst WYMIAR_PROSTOKATA;
 using namespace std;
 
 /*
-Klasa Prostokat modeluje pojęcie prostokąta jako WYMIAR_PROSTOKATA wektorów. 
-Zawiera zapowiedzi metod operujących na nim, metody obsługi strumienia, 
-zapisu oraz przeciążenia operatora []
- */
+*
+* Plik zawiera definicję klasy opisującej prostokąt oraz zestaw narzędzi do operacji na nim.
+*
+*
+* Klasa Prostokat modeluje pojęcie prostokąta jako WYMIAR_PROSTOKATA wektorów. 
+* Zawiera zapowiedzi metod operujących na nim, metody obsługi strumienia, 
+* zapisu oraz przeciążenia operatora []
+*
+*/
+
 class Prostokat
 {
   Wektor Prostokat[wymiarProst];

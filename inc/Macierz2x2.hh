@@ -6,11 +6,15 @@
 #include <cassert>
 #include "Wektor.hh"
 
-
 /*
-Klasa Macierz2x2 modeluje pojęcie macierzy jako dwuelementową tablicę wektorów (dwuwymiarowych).
-Zawiera zapowiedzi metod operujących na niej oraz przeciążenia operatorów [], *
- */
+*
+* Plik zawiera definicję klasy opisującej macierz 2x2 oraz zestaw narzędzi do jej obsługi.
+*
+*
+* Klasa Macierz2x2 modeluje pojęcie macierzy jako dwuelementową tablicę wektorów (dwuwymiarowych).
+* Zawiera zapowiedzi metod operujących na niej oraz przeciążenia operatorów [], *
+*
+*/
 class Macierz2x2
 {
 

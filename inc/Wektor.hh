@@ -8,10 +8,16 @@
 const int wymiarWekt WYMIAR_WEKTORA;
 using namespace std;
 
+
 /*
-Klasa Wektor modeluje pojęcie wektora jako tablicę WYMIAR_WEKTORA-elementową.
-Zawiera zapowiedzi metod operujących na nim oraz przeciążeń operatorów [], +, -
- */
+*
+* Plik zawiera definicję klasy Wektor modelującej pojęcie wektora
+*
+*
+* Klasa Wektor modeluje pojęcie wektora jako tablicę WYMIAR_WEKTORA-elementową.
+* Zawiera zapowiedzi metod operujących na nim oraz przeciążeń operatorów [], +, -
+*
+*/
 class Wektor
 {
 
