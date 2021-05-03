@@ -1,6 +1,5 @@
 #include "Prostokat.hh"
 
-
 using namespace std;
 
 /*
@@ -14,7 +13,7 @@ void Prostokat::WczytajProstokat(string &sNazwaPliku)
   cin >> sNazwaPliku;
   cout << endl;
 
-  for (int index = 0; index <= 3; index++)
+  for (int index = 0; index < 4; index++)
   {
     cout << "Podaj współrzędne ";
     if (index == 0)
@@ -25,6 +24,8 @@ void Prostokat::WczytajProstokat(string &sNazwaPliku)
       cout << "prawego górnego wierzchołka" << endl;
     else if (index == 3)
       cout << "lewego górnego wierzchołka" << endl;
+    else if (index == 4)
+      cout << "piątego wierzchołka" << endl;
 
     cin >> x_coord;
     cin >> y_coord;
@@ -55,7 +56,7 @@ bool Prostokat::ZapiszPlik(string sNazwaPliku, double Przesuniecie)
 }
 
 /*Funkcja obraca prostokąt podaną ilość razy */
-void Prostokat::ObrocProstokat(Macierz2x2 Macierz)
+void Prostokat::ObrocProstokat(Macierz<ROZMIAR> Macierz)
 {
   for (int index = 0; index < Macierz.getIlosc(); index++)
   {
@@ -65,8 +66,7 @@ void Prostokat::ObrocProstokat(Macierz2x2 Macierz)
 }
 
 /*Przesuniecie prostokata o podany wektor */
-
-void Prostokat::Przesuniecie(Wektor Wektor)
+void Prostokat::Przesuniecie(Wektor<ROZMIAR> Wektor)
 {
   for (int index = 0; index < wymiarProst; index++)
     Prostokat[index] = Prostokat[index] + Wektor;
@@ -104,26 +104,25 @@ void Prostokat::ObliczDlugosc()
 
 void Prostokat::WspolrzedneDoStrumienia(ostream &StrmWy, double Przesuniecie)
 {
-  StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[0][0] + Przesuniecie
-         << setw(16) << fixed << setprecision(10) << Prostokat[0][1] + Przesuniecie << endl;
-  StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[1][0] + Przesuniecie
-         << setw(16) << fixed << setprecision(10) << Prostokat[1][1] + Przesuniecie << endl;
-  StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[2][0] + Przesuniecie
-         << setw(16) << fixed << setprecision(10) << Prostokat[2][1] + Przesuniecie << endl;
-  StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[3][0] + Przesuniecie
-         << setw(16) << fixed << setprecision(10) << Prostokat[3][1] + Przesuniecie << endl;
-  /*StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[0][0] + Przesuniecie
-         << setw(16) << fixed << setprecision(10) << Prostokat[0][1] + Przesuniecie << endl;*/
+  int rozmiar = ROZMIAR;
+  for (int i = 0; i < wymiarProst; i++)
+  {
+    for (int j = 0; j < rozmiar; j++)
+    {
+      StrmWy << setw(16) << fixed << setprecision(10) << Prostokat[i][j] + Przesuniecie;
+    }
+    StrmWy << endl;
+  }
 }
 
 /*indeksowanie stałego prostokata*/
-Wektor Prostokat::operator[](int index) const
+Wektor<ROZMIAR> Prostokat::operator[](int index) const
 {
   return Prostokat[index];
 }
 
 /*indeksowanie referencji do prostokata*/
-Wektor &Prostokat::operator[](int index)
+Wektor<ROZMIAR> &Prostokat::operator[](int index)
 {
   return Prostokat[index];
 }
@@ -132,9 +131,9 @@ Wektor &Prostokat::operator[](int index)
 std::ostream &operator<<(std::ostream &StrmWy, const Prostokat &Prostokat)
 {
   StrmWy << endl;
-  StrmWy << "Współrzędne wierzchołka 1 = " << fixed << setprecision(10) << Prostokat[0][0] << "  " << fixed << setprecision(10) << Prostokat[0][1] << endl;
-  StrmWy << "Współrzędne wierzchołka 2 = " << fixed << setprecision(10) << Prostokat[1][0] << "  " << fixed << setprecision(10) << Prostokat[1][1] << endl;
-  StrmWy << "Współrzędne wierzchołka 3 = " << fixed << setprecision(10) << Prostokat[2][0] << "  " << fixed << setprecision(10) << Prostokat[2][1] << endl;
-  StrmWy << "Współrzędne wierzchołka 4 = " << fixed << setprecision(10) << Prostokat[3][0] << "  " << fixed << setprecision(10) << Prostokat[3][1] << endl;
+  for (int i = 0; i < wymiarProst; i++)
+  {
+    StrmWy << "Współrzędne wierzchołka " << i+1 << " = " << fixed << setprecision(10) << Prostokat[i][0] << "  " << fixed << setprecision(10) << Prostokat[i][1] << endl;
+  }
   return StrmWy;
 }

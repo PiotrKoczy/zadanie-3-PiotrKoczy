@@ -7,6 +7,7 @@
         "ostream": "cpp",
         "limits": "cpp",
         "string": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "iosfwd": "cpp"
     }
 }

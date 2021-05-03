@@ -6,11 +6,13 @@
 #include <iomanip>
 #include <string>
 #include <cassert>
-#include "Macierz2x2.hh"
+#include "Macierz.hh"
 #include "Wektor.hh"
 #include "lacze_do_gnuplota.hh"
 #define WYMIAR_PROSTOKATA = 4
+#define ROZMIAR_WEKTORA = 2
 const int wymiarProst WYMIAR_PROSTOKATA;
+const unsigned int ROZMIAR ROZMIAR_WEKTORA;
 using namespace std;
 
 /*
@@ -26,17 +28,17 @@ using namespace std;
 
 class Prostokat
 {
-  Wektor Prostokat[wymiarProst];
+  Wektor<ROZMIAR> Prostokat[wymiarProst];
 
 public:
   void WczytajProstokat(string &);
-  void Przesuniecie(Wektor);
-  void ObrocProstokat(Macierz2x2);
+  void Przesuniecie(Wektor<ROZMIAR>);
+  void ObrocProstokat(Macierz<ROZMIAR>);
   void ObliczDlugosc();
   void WspolrzedneDoStrumienia(std::ostream &, double);
   bool ZapiszPlik(string, double);
-  Wektor &operator[](int idx);
-  Wektor operator[](int idx) const;
+  Wektor<ROZMIAR> &operator[](int idx);
+  Wektor<ROZMIAR> operator[](int idx) const;
 };
 
 /*Przeciazenie operatora << pozwala wyświetlić współrzędne wierzchołków prostokąta*/

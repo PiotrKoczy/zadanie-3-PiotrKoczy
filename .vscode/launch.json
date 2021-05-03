@@ -8,7 +8,7 @@
             "name": "g++ - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/pk/Programiki/zadanie-3-PiotrKoczy/obroty_2D",
+            "program": "/home/pk/Programiki/zadanie-3-PiotrKoczy_PIECIOKAT/obroty_2D",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

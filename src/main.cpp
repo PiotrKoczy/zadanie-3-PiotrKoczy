@@ -3,23 +3,26 @@
 #include <fstream>
 #include <limits>
 #include "Wektor.hh"
-#include "Macierz2x2.hh"
+#include "Macierz.hh"
 #include "Prostokat.hh"
 #include "lacze_do_gnuplota.hh"
 
 using namespace std;
 
+#define ROZMIAR 2
 #define DL_KROTKI_BOK 100
 #define DL_DLUGI_BOK 150
 
 int main()
 {
-   Prostokat Prostokat;        // To tylko przykladowe definicje zmiennej
+   Prostokat Prostokat;
    PzG::LaczeDoGNUPlota Lacze; // Ta zmienna jest potrzebna do wizualizacji
                                // rysunku prostokata
    string sNazwaPliku;
+   typedef Macierz<ROZMIAR> Macierz2x2;
    Macierz2x2 Macierz;
-   Wektor wktr;
+   typedef Wektor<ROZMIAR> Wektor2D;
+   Wektor2D wktr;
    char wybor = '0';
 
    Prostokat.WczytajProstokat(sNazwaPliku);
